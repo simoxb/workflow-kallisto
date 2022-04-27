@@ -24,6 +24,7 @@ process kallisto_map{
 	path(gtf)
 	
 	output:
+	path("*.bam"), emit: bam
 	
 	script:
 	"""
