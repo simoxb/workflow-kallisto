@@ -28,7 +28,7 @@ process kallisto_map{
 	
 	script:
 	"""
-	kallisto quant -i ${index} -o ./ --gtf ${gtf} --genomebam ${reads[0]} ${reads[1]}
+	kallisto quant -i ${index} -o ./ --gtf ${gtf} --genomebam --threads ${params.threads} ${reads[0]} ${reads[1]}
  	"""
 
 }

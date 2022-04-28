@@ -11,6 +11,6 @@ process cufflinks{
 	
 	script:
 	"""
-	cufflinks -g ${gtf} ${bam}
+	cufflinks -g ${gtf} --library-type fr-unstranded --num-threads ${params.threads} ${bam}
 	"""
 }
