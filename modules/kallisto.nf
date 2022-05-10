@@ -35,11 +35,11 @@ process kallisto_map{
  	shell:
  	'''
  	if [[ $STRANDNESS == "firststrand" ]]; then
-		kallisto quant -i ${index} -o ./ --gtf ${gtf} --fr-stranded --gennomebam --threads ${params.threads} ${reads[0]} ${reads[1]}
-   	elif [ $STRANDNESS == "secondstrand" ]]; then
-		kallisto quant -i ${index} -o ./ --gtf ${gtf} --rf-stranded --gennomebam --threads ${params.threads} ${reads[0]} ${reads[1]}
+		kallisto quant -i !{index} -o ./ --gtf !{gtf} --fr-stranded --genomebam --threads !{params.threads} !{reads[0]} !{reads[1]}
+   	elif [[ $STRANDNESS == "secondstrand" ]]; then
+		kallisto quant -i !{index} -o ./ --gtf !{gtf} --rf-stranded --genomebam --threads !{params.threads} !{reads[0]} !{reads[1]}
     	elif [[ $STRANDNESS == "unstranded" ]]; then
-		kallisto quant -i ${index} -o ./ --gtf ${gtf} --gennomebam --threads ${params.threads} ${reads[0]} ${reads[1]}
+		kallisto quant -i !{index} -o ./ --gtf !{gtf} --genomebam --threads !{params.threads} !{reads[0]} !{reads[1]}
 	else  
 		echo $STRANDNESS > error_strandness.txt
 		echo "strandness cannot be determined" >> error_strandness.txt
