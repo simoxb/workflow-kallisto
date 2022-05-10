@@ -6,7 +6,7 @@ process fastp{
 	tuple val(id), path(reads)
 	
 	output: 
-	tuple val(id), path("fastp*{1,2}.fq"), emit: trimmed
+	tuple val(id), path("fastp*{1,2}*.fq"), emit: trimmed
 		
 	script:
 	"""
