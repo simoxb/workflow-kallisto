@@ -27,11 +27,7 @@ process kallisto_map{
 	output:
 	path("*.bam"), emit: bam
 	
-	script:
-	"""
-	kallisto quant -i ${index} -o ./ --gtf ${gtf} --genomebam --threads ${params.threads} ${reads[0]} ${reads[1]}
- 	"""
- 	
+	
  	shell:
  	'''
  	if [[ $STRANDNESS == "firststrand" ]]; then
