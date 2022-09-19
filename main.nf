@@ -18,7 +18,7 @@ workflow rnaseq{
 	main:
 		fastp(fastq_input)
 		kallisto_index(params.transcriptome)
-		check_strandedness(fastq_input, params.gtf, kallisto_index.out.index)
+		check_strandedness(fastq_input, params.gtf, params.ref_cdna)
 		kallisto_map(check_strandedness.out, fastp.out.trimmed, kallisto_index.out.index, params.gtf)
 }
 

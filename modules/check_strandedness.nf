@@ -5,14 +5,14 @@ process check_strandedness{
     input:
      tuple val(sample_name), path(reads)
      path(annotation)
-     path(index)
+     path(ref_cdna)
 
     output: 
         env STRANDNESS
     
     shell:
     '''   
-     check_strandedness -g !{annotation} -r1 !{reads[0]} -r2 !{reads[1]} --kallisto_index !{index} > result.txt
+     check_strandedness -g !{annotation} -r1 !{reads[0]} -r2 !{reads[1]} --transcripts !{ref_cdna} > result.txt
     result=$( tail -n 1 result.txt )
     if [[ $result == *"likely unstranded"* ]]; then
           STRANDNESS="unstranded"
