@@ -28,6 +28,7 @@ process kallisto_map{
 	
 	output:
 	path("*.bam"), emit: bam
+	path("*.tsv"), emit: tsv
 	
 	
  	shell:
